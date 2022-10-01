@@ -92,5 +92,9 @@ ENV PATH $GEM_HOME/bin:$PATH
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
 RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
 
-ENV BASE_DIR /burning_house
-WORKDIR $BASE_DIR
+ADD Gemfile ./
+ADD Gemfile.lock ./
+RUN bundle install
+
+ENV APP_DIR=/burning_house
+WORKDIR $APP_DIR
