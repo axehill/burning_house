@@ -16,12 +16,14 @@ services:
   app:
     build:
       context: .
-    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
+    command: "irb"
     depends_on:
       - db
       - redis 
     tty: true
     stdin_open: true
+    volumes:
+    - .:/burning_house
   redis:
     image: redis:6.2.7
     command: redis-server --appendonly yes
