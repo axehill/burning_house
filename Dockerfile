@@ -94,6 +94,9 @@ RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
 
 ADD Gemfile ./
 ADD Gemfile.lock ./
+
+RUN gem update --system
+RUN bundle update --bundler
 RUN bundle install
 
 ENV APP_DIR=/burning_house
