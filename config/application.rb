@@ -33,5 +33,10 @@ module BurningHouse
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |generator|
+      generator.test_framework :rspec
+      generator.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end

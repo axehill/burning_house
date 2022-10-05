@@ -1,15 +1,19 @@
 setup:
-	docker-compose build
+	make build
 	make dbcreate
 	make migrate
+build:
+	docker-compose build
 bundle:
-	docker-compose run --rm app bin/bundle
+	docker-compose run --rm app bin/bundle install
 dbcreate:
 	docker-compose run --rm app bin/rails db:create
 migrate:
 	docker-compose run --rm app bin/rails db:migrate
 console:
 	docker-compose run --rm app bin/rails c
+rspec:
+	docker-compose run --rm app bin/bundle exec rspec -fd
 logs:
 	docker-compose logs app
 down:

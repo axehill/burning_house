@@ -25,9 +25,11 @@ services:
       - 3000:3000
     depends_on:
       - db
-      - redis 
+      - redis
     volumes:
       - .:/burning_house
+      - gem_data:/usr/local/bundle
 volumes:
   mysql_data:
   redis_data:
+  gem_data:
