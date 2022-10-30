@@ -1,0 +1,32 @@
+jobs:
+  test:
+    docker:
+      - image: cimg/ruby:3.1.2
+        environment:
+          RAILS_ENV: test
+          DATABASE_HOST: 127.0.0.1
+      - image: cimg/mysql:8.0
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: burning_house_test
+    working_directory: ~/burning_house
+    steps:
+      - checkout
+      - run:
+          name: "bundle install"
+          command: bundle install --path vendor/bundle
+      - run:
+          name: "create database"
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:migrate
+      - run:
+          name: RSpec
+          command: bundle exec rspec
+
+workflows:
+  version: 2
+  workflows:
+    jobs:
+      - test
