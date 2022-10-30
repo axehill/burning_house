@@ -1,24 +1,19 @@
 # README
+this is broken todo application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## install
+```
+$ git clone https://github.com/axehill/burning_house.git
+$ cd burning_house
+$ make setup
+```
 
-Things you may want to cover:
+## tables
 
-* Ruby version
+### todos
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+name | type
+-- | --
+state | integer
+title | string(255)
+memo | text

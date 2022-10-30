@@ -2,6 +2,8 @@ setup:
 	make build
 	make dbcreate
 	make migrate
+	make up
+	make open
 build:
 	docker-compose build
 bundle:
